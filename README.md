@@ -15,3 +15,7 @@ Then you'll want to symlink the script into a directory that's in your PATH:
 ## Usage
 
 Now simply run `upgrade-protractor` in the Womply app directory that you need to run Protractors in.
+
+### TODO
+
+- make this a Fish script that calls out to the node script to update the package.json, then calls `npm update` directly and finally reverts package.json back to its original state
