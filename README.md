@@ -4,13 +4,13 @@ A set of simple scripts that upgrades `protractor` and `gulp-protractor` so that
 
 ## Installation/Setup
 
-You'll want to make the script executable:
+You'll want to make the main Fish script executable:
 
 `$ chmod a+x upgrade-protractor`
 
-Then you'll want to symlink the scripts into a directory that's in your PATH. These snippets assume you are currently in the directory that you cloned this repo to:
+Then you'll want to symlink the scripts into a directory that's in your PATH. These Fish snippets assume you are currently in the directory that you cloned this repo into:
 
-```sh
+```fish
 $ ln -s (pwd)/upgrade-protractor /usr/local/bin/
 $ ln -s (pwd)/update-package.js /usr/local/bin/
 ```
