@@ -1,5 +1,9 @@
 #!/usr/bin/env fish
 
-node /usr/local/bin/update-package.js # update package.json
+# A nice way for a script to determine what directory it lives in
+# via https://stackoverflow.com/questions/19672673/can-a-fish-script-tell-what-directory-its-stored-in
+set helperscript (dirname (status current-filename))'/update-package.js'
+
+node $helperscript # update package.json
 npm update # update the packages
 git checkout package.json # restore package.json
