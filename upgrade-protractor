@@ -1,28 +1,5 @@
-#!/usr/bin/env node
-const fs = require('fs');
-const { execSync } = require('child_process');
+#!/usr/bin/env fish
 
-console.log('Reading in `package.json`...');
-// read in package.json
-const package = fs.readFileSync('./package.json', { encoding: 'utf8' });
-
-// update "gulp-protractor" to "4.1.0",
-console.log('Updating `gulp-protractor` to 4.1.0');
-let newpackage = package.replace(
-  /"gulp-protractor".+/,
-  '"gulp-protractor": "4.1.0",'
-);
-
-// update "protractor" to "5.1.1",
-console.log('Updating `protractor` to 5.1.1');
-newpackage = newpackage.replace(/"protractor".+/, '"protractor": "5.1.1",');
-
-// write out package.json
-console.log('Saving the changes to `package.json`...');
-fs.writeFileSync('./package.json', newpackage, { encoding: 'utf8' });
-
-// run `npm update`
-console.log('Running `npm update`');
-// TODO: get the output of `npm update` to output live
-const output = execSync('npm update');
-execSync('git checkout package.json');
+node /usr/local/bin/update-package.js # update package.json
+npm update # update the packages
+git checkout package.json # restore package.json
