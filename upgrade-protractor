@@ -1,9 +1,15 @@
 #!/usr/bin/env fish
 
+# Make a backup of the package.json to restore from later
+cp package.json package-backup.json
+
 # A nice way for a script to determine what directory it lives in
-# via https://stackoverflow.com/questions/19672673/can-a-fish-script-tell-what-directory-its-stored-in
+# via https: //stackoverflow.com/questions/19672673/can-a-fish-script-tell-what-directory-its-stored-in
 set helperscript (dirname (status current-filename))'/update-package.js'
 
 node $helperscript # update package.json
 npm update # update the packages
-git checkout package.json # restore package.json
+
+# restore package.json from the backup
+rm package.json
+mv package-backup.json package.json
